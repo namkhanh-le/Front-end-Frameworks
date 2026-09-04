@@ -8,8 +8,7 @@ const watchlist = ["Inception", "Interstellar"];
 const newMovies = ["Tenet", "Oppenheimer"];
 
 // 1. Create a new array that combines watchlist and newMovies. Do not mutate either.
-const combined = [...watchlist, ...newMovies];
-
+const combined = [...watchlist,...newMovies];
 // 2. Create a new array with "Dune" at the beginning of watchlist. Do not mutate watchlist.
 const withDune = ["Dune", ...watchlist];
 
