@@ -31,7 +31,7 @@ import App from "../App";
 import type { Movie } from "../types";
 
 // ── Shared test fixtures ──────────────────────────────────────────────────────
-
+    
 const MOCK_MOVIE: Movie = {
   id: 1,
   title: "Inception",
