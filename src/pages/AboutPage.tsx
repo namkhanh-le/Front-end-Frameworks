@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 function AboutPage() {
   return (
     <main className="main-container">
-      <h1>About</h1>
+      <h1>About Cinegrid</h1>
 
-      <p>This is the Movie App.</p>
+      <p>A movie discovery app built with React and the TMDB API.</p>
 
-      <Link to="/">Back to Home</Link>
+      <Link to="/">Back to movies</Link>
     </main>
   )
 }

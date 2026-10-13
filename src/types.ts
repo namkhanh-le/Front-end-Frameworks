@@ -12,4 +12,5 @@ export interface Movie {
     adult?: boolean;
     original_language?: string;
     video?: boolean;
+    backdrop_path: string | null;
 }

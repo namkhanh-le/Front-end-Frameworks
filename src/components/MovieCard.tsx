@@ -6,9 +6,10 @@ import {GENRES, getGenreNames} from "../data/genres"
 
 interface MovieCardProps {
     movie: Movie;
+    onMovieClick: (movie: Movie) => void;
 }
 
-export default function MovieCard({ movie }: MovieCardProps) {
+export default function MovieCard({ movie, onMovieClick }: MovieCardProps) {
     const year = movie.release_date?.slice(0, 4) ?? "";
     const rating = movie.vote_average?.toFixed(1) ?? "N/A";
     const [isFavourite, setIsFavourite] = useState(false);
@@ -45,7 +46,14 @@ export default function MovieCard({ movie }: MovieCardProps) {
             </svg>
         </button>
         </div>
-        <span className="quick-view-hint">View Details</span>
+        <span
+          className="quick-view-hint"
+          onClick={() => onMovieClick(movie)}
+          role="button"
+          tabIndex={0}
+        >
+          View Details
+        </span>
       </div>
     </div>
     <div className="movie-card-info">
