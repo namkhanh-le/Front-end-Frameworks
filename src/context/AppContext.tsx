@@ -38,8 +38,10 @@ const reducer = (state: State, action: Action): State => {
 type AppContextType = {
     theme: Theme;
     toggleTheme: () => void;
-    favorites: Movie []
-    
+    favorites: Movie[];
+    toggleFavorite: (movie: Movie) => void;
+    isFavorite: (id: number) => boolean;
+
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -49,18 +51,47 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const initialTheme =
         (localStorage.getItem("cinegrid_theme") as Theme) || "dark";
 
-    const [state, dispatch] = useReducer(reducer, { theme: initialTheme });
+    const initialFavorites: Movie[] = JSON.parse(
+        localStorage.getItem("cinegrid_favorites") || "[]"
+    );
+
+    const [state, dispatch] = useReducer(reducer, {
+        theme: initialTheme,
+        favorites: initialFavorites,
+    });
 
     // Sync to localStorage + DOM whenever theme changes
+    // Sync theme to localStorage + DOM whenever theme changes
     useEffect(() => {
         localStorage.setItem("cinegrid_theme", state.theme);
         document.documentElement.setAttribute("data-theme", state.theme);
     }, [state.theme]);
 
+    // Sync favorites to localStorage whenever they change
+    useEffect(() => {
+        localStorage.setItem(
+            "cinegrid_favorites",
+            JSON.stringify(state.favorites)
+        );
+    }, [state.favorites]);
+
     const toggleTheme = () => dispatch({ type: "SET_THEME" });
 
+    const toggleFavorite = (movie: Movie) =>
+        dispatch({ type: "TOGGLE_FAVOURITE", payload: movie });
+
+    const isFavorite = (id: number) =>
+        state.favorites.some((movie) => movie.id === id);
+
     return (
-        <AppContext.Provider value={{ theme: state.theme, toggleTheme }}>
+        <AppContext.Provider 
+            value={{ 
+                theme: state.theme,
+                toggleTheme,
+                favorites: state.favorites,
+                toggleFavorite,
+                isFavorite,
+            }}>
             {children}
         </AppContext.Provider>
     );
