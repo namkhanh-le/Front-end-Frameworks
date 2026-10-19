@@ -14,3 +14,5 @@ export interface Movie {
     video?: boolean;
     backdrop_path: string | null;
 }
+
+export type Theme = "light" | "dark";
