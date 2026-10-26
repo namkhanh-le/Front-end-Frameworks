@@ -1,10 +1,8 @@
-import MovieList from './components/MovieList'
-import SearchBar from './components/SearchBar'
 import HeaderComponent from './components/HeaderComp'
 import { AppProvider } from './context/AppContext'
 import {useState} from 'react'
 
-import { NavLink, Routes, Route, BrowserRouter } from 'react-router-dom'
+import {Routes, Route, BrowserRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import NotFoundPage from './pages/NotFoundPage'
