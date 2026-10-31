@@ -1,7 +1,7 @@
 import MovieList from '../components/MovieList'
 import useMovies from '../hooks/useMovies'
 import MovieModal from "../components/MovieModal"
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Movie} from "../types"; 
 
 type HomePageProps = {

@@ -13,4 +13,8 @@ export interface Movie {
     original_language?: string;
     video?: boolean;
     backdrop_path: string | null;
+    onMovieClick?: () => void;
+    
 }
+
+export type Theme = "light" | "dark";
