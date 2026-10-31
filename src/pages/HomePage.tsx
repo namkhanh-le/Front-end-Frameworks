@@ -10,12 +10,13 @@ type HomePageProps = {
 
 function HomePage({ searchQuery }: HomePageProps) {
 
-  const { movies, loading, error } = useMovies(
-    //`https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=1&include_adult=false`);
-    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`);
+  const trimmedQuery = searchQuery.trim();
 
-  const filterMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const moviesUrl = trimmedQuery
+    ? `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(trimmedQuery)}&language=en-US&page=1&include_adult=false`
+    : `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
+
+  const { movies, loading, error } = useMovies(moviesUrl);
 
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
@@ -28,7 +29,7 @@ function HomePage({ searchQuery }: HomePageProps) {
 
       {!loading && !error && (
         <MovieList 
-          movies={filterMovies}
+          movies={movies}
           onMovieClick={setSelectedMovie}
         />
       )}

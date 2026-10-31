@@ -30,7 +30,7 @@ export default function MovieCard({ movie, onMovieClick }: MovieCardProps) {
               {rating}
             </span>
             <button
-              className={isFavourite ? "favorite-btn active" : "favorite-btn"}
+              className={isFavourite ? "favorite-btn is-favorite" : "favorite-btn"}
               title={isFavourite ? "Remove from favourites" : "Add to favourites"}
               aria-label={isFavorite(movie.id) ? "Remove from Favourites" : "Add to Favourites"}
               aria-pressed={isFavourite}
@@ -48,14 +48,13 @@ export default function MovieCard({ movie, onMovieClick }: MovieCardProps) {
               </svg>
             </button>
           </div>
-          <span
+          <button
+            type="button"
             className="quick-view-hint"
             onClick={() => onMovieClick(movie)}
-            role="button"
-            tabIndex={0}
           >
             View Details
-          </span>
+          </button>
         </div>
       </div>
       <div className="movie-card-info">
