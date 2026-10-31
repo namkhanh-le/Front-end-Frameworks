@@ -1,5 +1,6 @@
 import { Movie } from "../types";
 import { getGenreNames } from "../data/genres";
+import { useAppContext } from "../context/AppContext";
 
 type MovieModalProps = {
   movie: Movie;
@@ -7,7 +8,9 @@ type MovieModalProps = {
 };
 
 const MovieModal = ({ movie, onClose }: MovieModalProps) => {
-  const genres = getGenreNames(movie.genre_ids ?? []);
+const genres = getGenreNames(movie.genre_ids ?? []);
+const { toggleFavorite, isFavorite } = useAppContext();
+const alreadyAdded = isFavorite(movie.id);
 
   return (
     <div className="modal-overlay active" onClick={onClose}>
@@ -79,8 +82,10 @@ const MovieModal = ({ movie, onClose }: MovieModalProps) => {
             </div>
 
             <div className="modal-footer-actions">
-              <button className="btn-primary">
-                <span>Add to Watchlist</span>
+              <button
+                className="btn-primary"
+                onClick={() => toggleFavorite(movie)}>
+                  <span>{alreadyAdded ? "Remove from Watchlist" : "Add to Watchlist"}</span>
               </button>
               <a
                 href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
@@ -89,7 +94,8 @@ const MovieModal = ({ movie, onClose }: MovieModalProps) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
-                >Watch Trailer</a>
+                >Watch Trailer
+                </a>
             </div>
           </div>
         </div>

@@ -1,11 +1,13 @@
 import HeaderComponent from './components/HeaderComp'
 import { AppProvider } from './context/AppContext'
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {Routes, Route, BrowserRouter } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
+
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import NotFoundPage from './pages/NotFoundPage'
+import WatchlistPage from './pages/WatchlistPage'
 
 const App = () => {
 
@@ -21,12 +23,13 @@ const App = () => {
           />
           <Routes>
             <Route path="/" element={<HomePage searchQuery={searchQuery} />} />
+            <Route path="/watchlist" element={<WatchlistPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </BrowserRouter>
-  </AppProvider>
+    </AppProvider>
   );
 }
 

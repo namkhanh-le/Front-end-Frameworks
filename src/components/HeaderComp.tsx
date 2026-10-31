@@ -12,7 +12,7 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
 
   return (
     <header className="site-header">
-      <div className="header-inner">n
+      <div className="header-inner">
         <div className="header-left">
           <div className="brand-logo">
             <div className="logo-dot"></div>
@@ -29,9 +29,9 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
         </div>
 
         <div className="header-actions">
-          <button className="btn-icon-label">
+          <NavLink to="/watchlist" className="btn-icon-label">
             Watchlist {favorites.length}
-          </button>
+          </NavLink>
           <button className="theme-toggle-btn" onClick={toggleTheme}>
             {theme === "dark" ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
