@@ -1,5 +1,6 @@
 import { Movie } from "../types";
 import { getGenreNames } from "../data/genres";
+import { getPosterUrl, getBackdropUrl } from "../data/sampleMovies";
 import { useAppContext } from "../context/AppContext";
 
 type MovieModalProps = {
