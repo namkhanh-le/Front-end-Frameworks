@@ -20,7 +20,7 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
           </div>
           <nav className="header-nav">
             <NavLink to="/" end>Home</NavLink>
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/about"> About</NavLink>
           </nav>
         </div>
 
@@ -35,7 +35,7 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
               isActive ? "btn-icon-label active" : "btn-icon-label"
             }
           >
-            Watchlist {favorites.length}
+            Watchlist ({favorites.length})
           </NavLink>
           <button className="theme-toggle-btn" onClick={toggleTheme}>
             {theme === "dark" ? (
