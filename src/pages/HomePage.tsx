@@ -9,23 +9,39 @@ type HomePageProps = {
 }
 
 function HomePage({ searchQuery }: HomePageProps) {
+  const [mediaType, setMediaType] = useState<"movie" | "tv">("movie");
+    const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   const trimmedQuery = searchQuery.trim();
+  const searchEndpoint = mediaType === "tv" ? "tv" : "movie";
 
   const moviesUrl = trimmedQuery
-    ? `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(trimmedQuery)}&language=en-US&page=1&include_adult=false`
-    : `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
+    ? `https://api.themoviedb.org/3/search/${searchEndpoint}?query=${encodeURIComponent(trimmedQuery)}&language=en-US&page=1&include_adult=false`
+    : `https://api.themoviedb.org/3/${searchEndpoint}/popular?language=en-US&page=1`;
 
   const { movies, loading, error } = useMovies(moviesUrl);
 
-  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const displayMovies = mediaType === "tv"
+    ? movies.map((item) => {
+      const show = item as Movie & {
+        name?: string;
+        first_air_date?: string;
+      };
+
+      return {
+        ...item,
+        title: show.name ?? "Untitled",
+        release_date: show.first_air_date ?? "",
+      };
+    })
+    : movies;
 
   const surpriseMe = async () => {
     try {
       const randomPage = Math.floor(Math.random() * 500) + 1;
 
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${randomPage}`,
+      const response = await fetch( // talk about this
+        `https://api.themoviedb.org/3/${mediaType}/popular?language=en-US&page=${randomPage}`,
         {
           headers: {
             accept: "application/json",
@@ -44,7 +60,15 @@ function HomePage({ searchQuery }: HomePageProps) {
         const randomMovie =
           result.results[Math.floor(Math.random() * result.results.length)];
 
-        setSelectedMovie(randomMovie);
+        setSelectedMovie( // talk aboutn this
+          mediaType === "tv"
+            ? {
+              ...randomMovie,
+              title: randomMovie.name,
+              release_date: randomMovie.first_air_date,
+            }
+            : randomMovie
+        );
       }
     } catch (error) {
       console.error("Surprise Me failed:", error);
@@ -54,13 +78,33 @@ function HomePage({ searchQuery }: HomePageProps) {
   return (
     <main className="main-container">
 
-      <button
-        type="button"
-        className="btn-primary"
-        onClick={surpriseMe}
-      >
-        Surprise Me
-      </button>
+      <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+        <button
+          type="button" // movie button
+          className="btn-primary"
+          onClick={() => setMediaType("movie")}
+          aria-pressed={mediaType === "movie"}
+        >
+          Movies
+        </button>
+
+        <button
+          type="button" // tv button
+          className="btn-primary"
+          onClick={() => setMediaType("tv")}
+          aria-pressed={mediaType === "tv"}
+        >
+          TV Shows
+        </button>
+
+        <button
+          type="button" // surprise me button
+          className="btn-primary"
+          onClick={surpriseMe}
+        >
+          Surprise Me
+        </button>
+      </div>
 
       {loading && <p>Loading...</p>}
 
@@ -68,7 +112,7 @@ function HomePage({ searchQuery }: HomePageProps) {
 
       {!loading && !error && (
         <MovieList
-          movies={movies}
+          movies={displayMovies}
           onMovieClick={setSelectedMovie}
         />
       )}
