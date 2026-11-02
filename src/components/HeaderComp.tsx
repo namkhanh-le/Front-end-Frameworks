@@ -16,7 +16,7 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
         <div className="header-left">
           <div className="brand-logo">
             <div className="logo-dot"></div>
-            <span className="logo-text">CINE&middot;GRID</span>
+            <NavLink to="/" end className="logo-text">CINE GRID</NavLink>
           </div>
           <nav className="header-nav">
             <NavLink to="/" end>Home</NavLink>
@@ -28,15 +28,15 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
           <SearchBar query={searchQuery} onChange={onChange} />
         </div>
 
+
         <div className="header-actions">
-         <NavLink
-            to="/watchlist"
-            className={({ isActive }) =>
-              isActive ? "btn-icon-label active" : "btn-icon-label"
-            }
-          >
+
+          <NavLink to="/watchlist" className={({ isActive }) => // watch list button
+            isActive ? "btn-icon-label active" : "btn-icon-label"
+          }>
             Watchlist ({favorites.length})
           </NavLink>
+
           <button className="theme-toggle-btn" onClick={toggleTheme}>
             {theme === "dark" ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

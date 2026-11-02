@@ -4,13 +4,15 @@ import MovieModal from "../components/MovieModal"
 import { useState } from 'react';
 import { Movie } from "../types";
 
+import { MediaTypeToggle } from '../components/MediaTypeToggle'
+
 type HomePageProps = {
   searchQuery: string
 }
 
 function HomePage({ searchQuery }: HomePageProps) {
-  const [mediaType, setMediaType] = useState<"movie" | "tv">("movie");
-    const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const [mediaType, setMediaType] = useState<"movie" | "tv">("movie"); // tv shows
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   const trimmedQuery = searchQuery.trim();
   const searchEndpoint = mediaType === "tv" ? "tv" : "movie";
@@ -79,23 +81,8 @@ function HomePage({ searchQuery }: HomePageProps) {
     <main className="main-container">
 
       <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-        <button
-          type="button" // movie button
-          className="btn-primary"
-          onClick={() => setMediaType("movie")}
-          aria-pressed={mediaType === "movie"}
-        >
-          Movies
-        </button>
-
-        <button
-          type="button" // tv button
-          className="btn-primary"
-          onClick={() => setMediaType("tv")}
-          aria-pressed={mediaType === "tv"}
-        >
-          TV Shows
-        </button>
+        
+        <MediaTypeToggle mediaType={mediaType} setMediaType={setMediaType} />
 
         <button
           type="button" // surprise me button

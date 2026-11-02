@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function AboutPage() {
   return (
@@ -7,7 +7,13 @@ function AboutPage() {
 
       <p>A movie discovery app built with React and the TMDB API.</p>
 
-      <Link to="/">Back to movies</Link>
+      <NavLink to="/">
+        Back to movies
+      </NavLink>
+
+      <NavLink to="/watchlist">
+        Watchlist
+      </NavLink>
     </main>
   )
 }
