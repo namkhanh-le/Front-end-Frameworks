@@ -9,8 +9,8 @@ type HomePageProps = {
 }
 
 function HomePage({ searchQuery }: HomePageProps) {
-  const [mediaType, setMediaType] = useState<"movie" | "tv">("movie");
-    const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const [mediaType, setMediaType] = useState<"movie" | "tv">("movie"); // tv shows
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   const trimmedQuery = searchQuery.trim();
   const searchEndpoint = mediaType === "tv" ? "tv" : "movie";
