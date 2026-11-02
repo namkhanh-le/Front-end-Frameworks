@@ -8,11 +8,7 @@ function AboutPage() {
       <p>A movie discovery app built with React and the TMDB API.</p>
 
       <NavLink to="/">
-        Back to movies
-      </NavLink>
-
-      <NavLink to="/watchlist">
-        Watchlist
+        Back to Home
       </NavLink>
     </main>
   )

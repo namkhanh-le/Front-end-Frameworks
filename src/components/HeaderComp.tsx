@@ -19,8 +19,9 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
             <NavLink to="/" end className="logo-text">CINE GRID</NavLink>
           </div>
           <nav className="header-nav">
-            <NavLink to="/" end>Home</NavLink>
-            <NavLink to="/about"> About</NavLink>
+            <NavLink to="/" end className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}>Home</NavLink>
+            <NavLink to="/about" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> About</NavLink>
+            <NavLink to="/watchlist" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> Watchlist</NavLink>
           </nav>
         </div>
 
@@ -30,12 +31,6 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
 
 
         <div className="header-actions">
-
-          <NavLink to="/watchlist" className={({ isActive }) => // watch list button
-            isActive ? "btn-icon-label active" : "btn-icon-label"
-          }>
-            Watchlist ({favorites.length})
-          </NavLink>
 
           <button className="theme-toggle-btn" onClick={toggleTheme}>
             {theme === "dark" ? (

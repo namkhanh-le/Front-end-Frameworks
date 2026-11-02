@@ -10,7 +10,7 @@ export default function SearchBar({ query, onChange }: SearchBarProps) {
 
         type="text"
         className="search-input"
-        placeholder="Search movies, plot keywords, titles..."
+        placeholder="Search movies, characters, plot keywords, titles..."
         value={query}
         onChange={(e) => onChange(e.target.value)}
       />
