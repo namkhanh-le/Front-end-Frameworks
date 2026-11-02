@@ -24,19 +24,20 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
           </nav>
         </div>
 
-        <div className="header-search"> // header search section
+        <div className="header-search">
           <SearchBar query={searchQuery} onChange={onChange} />
         </div>
 
-        <div className="header-actions"> // buttons section
+
+        <div className="header-actions">
 
           <NavLink to="/watchlist" className={({ isActive }) => // watch list button
-              isActive ? "btn-icon-label active" : "btn-icon-label"
-            }>
+            isActive ? "btn-icon-label active" : "btn-icon-label"
+          }>
             Watchlist ({favorites.length})
           </NavLink>
 
-          <button className="theme-toggle-btn" onClick={toggleTheme}> // theme toggle button
+          <button className="theme-toggle-btn" onClick={toggleTheme}>
             {theme === "dark" ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="5" />
