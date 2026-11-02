@@ -22,6 +22,7 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
             <NavLink to="/" end className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}>Home</NavLink>
             <NavLink to="/about" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> About</NavLink>
             <NavLink to="/watchlist" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> Watchlist</NavLink>
+            <NavLink to="/search" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> Search </NavLink>
           </nav>
         </div>
 
