@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import NotFoundPage from './pages/NotFoundPage'
 import WatchlistPage from './pages/WatchlistPage'
+import SearchPage from './pages/SearchPage'
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/watchlist" element={<WatchlistPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="/search" element={<SearchPage />} />
           </Routes>
         </div>
       </BrowserRouter>

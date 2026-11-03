@@ -86,8 +86,9 @@ function HomePage({ searchQuery }: HomePageProps) {
 
         <button
           type="button" // surprise me button
-          className="btn-primary"
+          className="btn-icon-label"
           onClick={surpriseMe}
+          
         >
           Surprise Me
         </button>
@@ -100,14 +101,14 @@ function HomePage({ searchQuery }: HomePageProps) {
       {!loading && !error && (
         <MovieList
           movies={displayMovies}
-          onMovieClick={setSelectedMovie}
+          onMovieClick={setSelectedMovie} // if not loading and no error, display
         />
       )}
 
       {selectedMovie && (
         <MovieModal
           movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
+          onClose={() => setSelectedMovie(null)} // display modal if selectedMovie is not null, and close modal when onClose is called
         />
       )}
 

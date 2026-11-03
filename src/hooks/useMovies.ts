@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {Movie} from '../types';
+import { useEffect, useState } from 'react';
+import { Movie } from '../types';
 
 export default function useMovies(url: string) {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -8,7 +8,18 @@ export default function useMovies(url: string) {
 
     useEffect(() => { // after rendering, use getMovies right away.
 
+        if (!url) {
+            setMovies([]);
+            setLoading(false);
+            setError(false);
+            return;
+        }
+
         async function getMovies() {
+
+            setLoading(true);
+            setError(false);
+
             try {
                 const response = await fetch(url, {
                     method: "GET",
@@ -16,7 +27,7 @@ export default function useMovies(url: string) {
                         accept: "application/json",
                         Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
                     },
-                
+
                 });
 
                 if (!response.ok) {
@@ -25,16 +36,16 @@ export default function useMovies(url: string) {
 
                 const result = await response.json();
                 setMovies(result.results);
-                } catch (error) {
-                    console.error(error);
-                    setError(true);
-                } finally {
-                    setLoading(false);
-                }
+            } catch (error) {
+                console.error(error);
+                setError(true);
+            } finally {
+                setLoading(false);
             }
+        }
 
-            getMovies();
-        }, [url]);
+        getMovies();
+    }, [url]);
 
     return { movies, loading, error };
 
