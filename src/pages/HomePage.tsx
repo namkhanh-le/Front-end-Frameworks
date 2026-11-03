@@ -6,20 +6,13 @@ import { Movie } from "../types";
 
 import { MediaTypeToggle } from '../components/MediaTypeToggle'
 
-type HomePageProps = {
-  searchQuery: string
-}
-
-function HomePage({ searchQuery }: HomePageProps) {
+function HomePage() {
   const [mediaType, setMediaType] = useState<"movie" | "tv">("movie"); // tv shows
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  const trimmedQuery = searchQuery.trim();
   const searchEndpoint = mediaType === "tv" ? "tv" : "movie";
 
-  const moviesUrl = trimmedQuery
-    ? `https://api.themoviedb.org/3/search/${searchEndpoint}?query=${encodeURIComponent(trimmedQuery)}&language=en-US&page=1&include_adult=false`
-    : `https://api.themoviedb.org/3/${searchEndpoint}/popular?language=en-US&page=1`;
+  const moviesUrl = `https://api.themoviedb.org/3/${searchEndpoint}/popular?language=en-US&page=1`;
 
   const { movies, loading, error } = useMovies(moviesUrl);
 

@@ -12,18 +12,18 @@ import SearchPage from './pages/SearchPage'
 
 const App = () => {
 
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <AppProvider>
       <BrowserRouter>
         <div className="app-layout">
           <HeaderComponent
-            searchQuery={searchQuery}
-            onChange={setSearchQuery}
+            // searchQuery={searchQuery}
+            // onChange={setSearchQuery}
           />
           <Routes>
-            <Route path="/" element={<HomePage searchQuery={searchQuery} />} />
+            <Route path="/" element={<HomePage/>} />
             <Route path="/watchlist" element={<WatchlistPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<NotFoundPage />} />

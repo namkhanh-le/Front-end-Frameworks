@@ -1,13 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-import SearchBar from "./SearchBar";
 
-type HeaderProps = {
-  searchQuery: string;
-  onChange: (value: string) => void;
-};
-
-const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
+function HeaderComponent() {
   const { theme, toggleTheme, favorites } = useAppContext();
 
   return (
@@ -26,9 +20,9 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
           </nav>
         </div>
 
-        <div className="header-search">
+        {/* <div className="header-search">
           <SearchBar query={searchQuery} onChange={onChange} />
-        </div>
+        </div> */}
 
 
         <div className="header-actions">
