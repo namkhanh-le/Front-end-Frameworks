@@ -6,14 +6,13 @@ function AboutPage() {
       <h1>About Cinegrid</h1>
 
       <p>A movie discovery app built with React and the TMDB API.</p>
-
-      <NavLink to="/">
-        Back to movies
-      </NavLink>
-
-      <NavLink to="/watchlist">
-        Watchlist
-      </NavLink>
+      <p>Features: </p>
+      <ul>
+        <li>Search for movies, TV shows, and celebrities</li>
+        <li>View detailed information about each title</li>
+        <li>Discover popular and trending content</li>
+        <li>Add movies to a watchlist</li>
+      </ul>
     </main>
   )
 }

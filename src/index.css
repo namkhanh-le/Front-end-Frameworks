@@ -129,6 +129,20 @@ select {
   gap: 20px;
 }
 
+.search-page {
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+
+}
+
+.search-page .header-search {
+    max-width: 100%;
+    height:60px;
+}
+
 .brand-logo {
   display: flex;
   align-items: center;
@@ -153,6 +167,7 @@ select {
 .logo-text {
   font-weight: 800;
   letter-spacing: -0.03em;
+  font-size: 40px;
 }
 
 .brand-badge {
@@ -238,6 +253,13 @@ select {
   gap: 10px;
 }
 
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
 .btn-icon-label {
   display: flex;
   align-items: center;
@@ -254,13 +276,28 @@ select {
 
 .btn-icon-label:hover {
   background-color: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .btn-icon-label.active {
   background-color: var(--bg-pill-active);
   color: #ffffff;
   border-color: var(--accent);
+}
+
+.btn-surprise {
+  transition:all var(--transition-fast);
+}
+
+.btn-surprise:hover {
+  background-color: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.btn-surprise:active {
+  transform: scale(0.95);
+  background-color: var(--bg-pill-active);
+  color: var(--accent);
 }
 
 .count-badge {
@@ -291,6 +328,7 @@ select {
 
 .theme-toggle-btn:hover {
   background-color: var(--bg-card-hover);
+  transform: translateY(-2px);
 }
 
 /* Stats Banner */
@@ -895,6 +933,7 @@ select {
 
 .btn-secondary:hover {
   background-color: var(--bg-card-hover);
+  transform: translateY(-2px);
 }
 
 /* Empty State */

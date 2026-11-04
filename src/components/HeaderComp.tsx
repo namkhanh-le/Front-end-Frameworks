@@ -1,13 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-import SearchBar from "./SearchBar";
 
-type HeaderProps = {
-  searchQuery: string;
-  onChange: (value: string) => void;
-};
-
-const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
+function HeaderComponent() {
   const { theme, toggleTheme, favorites } = useAppContext();
 
   return (
@@ -19,23 +13,19 @@ const HeaderComponent = ({ searchQuery, onChange }: HeaderProps) => {
             <NavLink to="/" end className="logo-text">CINE GRID</NavLink>
           </div>
           <nav className="header-nav">
-            <NavLink to="/" end>Home</NavLink>
-            <NavLink to="/about"> About</NavLink>
+            <NavLink to="/" end className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}>Home</NavLink>
+            <NavLink to="/about" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> About</NavLink>
+            <NavLink to="/watchlist" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> Watchlist</NavLink>
+            <NavLink to="/search" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> Search </NavLink>
           </nav>
         </div>
 
-        <div className="header-search">
+        {/* <div className="header-search">
           <SearchBar query={searchQuery} onChange={onChange} />
-        </div>
+        </div> */}
 
 
         <div className="header-actions">
-
-          <NavLink to="/watchlist" className={({ isActive }) => // watch list button
-            isActive ? "btn-icon-label active" : "btn-icon-label"
-          }>
-            Watchlist ({favorites.length})
-          </NavLink>
 
           <button className="theme-toggle-btn" onClick={toggleTheme}>
             {theme === "dark" ? (

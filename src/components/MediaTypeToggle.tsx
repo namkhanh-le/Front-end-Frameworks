@@ -7,7 +7,7 @@ export function MediaTypeToggle({ mediaType, setMediaType }: MediaTypeToggleProp
         <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
             <button
             type="button" // movie button
-            className="btn-primary"
+            className={`btn-icon-label ${mediaType === "movie" ? "active" : ""}`}
             onClick={() => setMediaType("movie")}
             aria-pressed={mediaType === "movie"}
             >
@@ -16,7 +16,7 @@ export function MediaTypeToggle({ mediaType, setMediaType }: MediaTypeToggleProp
 
             <button
             type="button" // tv button
-            className="btn-primary"
+            className={`btn-icon-label ${mediaType === "tv" ? "active" : ""}`}
             onClick={() => setMediaType("tv")}
             aria-pressed={mediaType === "tv"}
             >

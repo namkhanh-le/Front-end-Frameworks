@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import MovieList from "../components/MovieList";
 import MovieModal from "../components/MovieModal";
 import type { Movie } from "../types";
+import { NavLink } from "react-router-dom";
 
 function WatchlistPage() {
   const { favorites } = useAppContext();
