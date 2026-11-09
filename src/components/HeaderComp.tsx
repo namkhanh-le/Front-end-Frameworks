@@ -8,11 +8,10 @@ function HeaderComponent() {
     <header className="site-header">
       <div className="header-inner">
         <div className="header-left">
-          <div className="brand-logo">
-            <div className="logo-dot"></div>
-            <NavLink to="/" end className="logo-text">CINE GRID</NavLink>
-          </div>
           <nav className="header-nav">
+            <div className="brand-logo">
+              <NavLink to="/" end className="logo-text">LETTERBOXD CLONE</NavLink>
+            </div>
             <NavLink to="/" end className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}>Home</NavLink>
             <NavLink to="/about" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> About</NavLink>
             <NavLink to="/watchlist" className={({ isActive }) => isActive ? "btn-icon-label active" : "btn-icon-label"}> Watchlist</NavLink>
