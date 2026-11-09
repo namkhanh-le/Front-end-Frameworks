@@ -73,7 +73,7 @@ function HomePage() {
   return (
     <main className="main-container">
 
-      <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" , padding: "24px"}}>
         
         <MediaTypeToggle mediaType={mediaType} setMediaType={setMediaType} />
 
